@@ -1,29 +1,33 @@
 ---
-
+import BreatheBox from "./BreatheBox.astro";
+import Button from "./Button.astro";
+import InputSlider from "./InputSlider.astro";
 ---
 
 <div class="flex flex-col items-center gap-4">
   <h1 class="font-800 text-14">Breathe Deep</h1>
-  <div class="flex flex-row flex-nowrap gap-2">
-    <div id="breatheBox" class="w-20 h-20 rounded-full blur-10 m-10"></div>
-  </div>
+  <BreatheBox />
 
-  <button id="myButton" class="my-10">Breathe</button>
+  <Button buttonId="myButton">Breathe</Button>
 
-  <div>
-    <label for="mySlider">Inhale A</label>
-    <input type="range" id="inhale" min="1" max="10" value="1" />
-  </div>
-  <div>
-    <label for="mySlider">Inhale Hold B</label>
-    <input type="range" id="inhaleHold" min="1" max="10" value="1" />
-  </div>
-  <div>
-    <label for="mySlider">Exhale C</label>
-    <input type="range" id="exhale" min="1" max="10" value="1" />
-  </div>
-  <div>
-    <label for="mySlider">Exhale Hold D</label>
-    <input type="range" id="exhaleHold" min="1" max="10" value="1" />
+  <div class="flex flex-col gap-2 w-300px">
+    <InputSlider label="Inhale A" sliderId="inhale" />
+    <InputSlider label="Inhale Hold B" sliderId="inhaleHold" />
+    <InputSlider label="Exhale C" sliderId="exhale" />
+    <InputSlider label="Exhale Hold D" sliderId="exhaleHold" />
   </div>
 </div>
+
+<script>
+  document.querySelectorAll(".slider").forEach((slider) => {
+    slider.addEventListener("input", (event) => {
+      const valueDiv = document.getElementById(`value-${event.target.id}`);
+
+      if (valueDiv) {
+        valueDiv.innerHTML = event.target.value + "s";
+      } else {
+        console.log("oops");
+      }
+    });
+  });
+</script>

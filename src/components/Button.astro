@@ -1,0 +1,13 @@
+---
+interface Props {
+  buttonId: string;
+}
+
+const { buttonId } = Astro.props;
+---
+
+<button
+  id={buttonId}
+  class="border-1 border-solid border-indigo my-10 px-5 py-2.5 rounded-full transition-all hover:bg-indigo hover:scale-105 active:scale-100">
+  <slot />
+</button>

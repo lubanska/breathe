@@ -8,8 +8,8 @@ let c: number;
 let d: number;
 
 const myKeyframe: Keyframe[] = [
-  { transform: "scale(1)", background: "blue" },
-  { transform: "scale(2)", background: "green" },
+  { transform: "scale(1)" },
+  { transform: "scale(2)" },
 ];
 
 const myTiming: KeyframeAnimationOptions = {

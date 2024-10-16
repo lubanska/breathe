@@ -1,0 +1,41 @@
+---
+interface Props {
+  label: string;
+  sliderId: string;
+}
+
+const { label, sliderId } = Astro.props;
+---
+
+<div class="hover:brightness-105">
+  <label class="pb-3" for="mySlider">{label}</label>
+  <div class="flex gap-2 items-center">
+    <input
+      type="range"
+      id={sliderId}
+      class="slider"
+      min="1"
+      max="10"
+      value="1"
+    />
+    <div id={`value-${sliderId}`} class="w-4">0s</div>
+  </div>
+</div>
+
+<style style="scss">
+  input[type="range"] {
+    @apply appearance-none h-2 w-full rounded-full  bg-transparent relative cursor-pointer shadow-indigo shadow-[0_0_0_1px] shadow-[0_0_0_1px_inset];
+
+    &::-webkit-slider-thumb {
+      @apply appearance-none bg-indigo w-5 h-5 rounded-full transition-all hover:scale-105 active:scale-100;
+    }
+
+    &::-moz-range-thumb {
+      @apply appearance-none bg-indigo w-5 h-5 rounded-full transition-all hover:scale-105 active:scale-100;
+    }
+
+    &::-ms-thumb {
+      @apply appearance-none bg-indigo w-5 h-5 rounded-full transition-all hover:scale-105 active:scale-100;
+    }
+  }
+</style>
