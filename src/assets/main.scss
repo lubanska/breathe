@@ -1,5 +1,5 @@
 body {
-  @apply bg-violet text-smoke font-sans m-20;
+  @apply bg-violet text-smoke font-sans m-10;
 }
 
 h1,
@@ -12,11 +12,6 @@ div {
   &::selection {
     @apply bg-smoke text-violet;
   }
-}
-
-h1,
-h2 {
-  @apply font-serif my-4;
 }
 
 h1 {

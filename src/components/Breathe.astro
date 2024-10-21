@@ -4,21 +4,21 @@ import Button from "./Button.astro";
 import InputSlider from "./InputSlider.astro";
 ---
 
-<div class="flex flex-col items-center gap-4">
-  <h1>Breathe deep...</h1>
+<div class="flex flex-col items-center gap-10">
+  <h1 class="text-center">Breathe deep...</h1>
   <BreatheBox />
 
-  <Button buttonId="myButton">Breathe</Button>
+  <Button buttonId="myButton" buttonLabel="Toggle breathing">Breathe</Button>
 
   <div class="flex gap-16 flex-wrap md:flex-nowrap">
-    <div class="flex flex-col gap-2 w-full md:basis-50%">
+    <div class="flex flex-col gap-3 w-full md:basis-50%">
       <h2>Change your focus</h2>
       <InputSlider label="Inhale" sliderId="inhale" />
       <InputSlider label="Hold" sliderId="inhaleHold" />
       <InputSlider label="Exhale" sliderId="exhale" />
       <InputSlider label="Break" sliderId="exhaleHold" />
     </div>
-    <div class="md:basis-50%">
+    <div class="md:basis-50% flex flex-col gap-3">
       <h2>About this tool</h2>
       <p>
         This tool makes it easy to feel calm and centered by guiding you through

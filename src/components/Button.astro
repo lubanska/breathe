@@ -1,13 +1,18 @@
 ---
 interface Props {
   buttonId: string;
+  buttonLabel: string;
 }
 
-const { buttonId } = Astro.props;
+const { buttonId, buttonLabel } = Astro.props;
 ---
 
-<button
-  id={buttonId}
-  class="border-1 border-solid border-indigo my-10 px-5 py-2.5 rounded-full transition-all hover:bg-indigo hover:text-violet hover:scale-105 active:scale-100 select-none">
+<button id={buttonId} type="button" aria-label={buttonLabel}>
   <slot />
 </button>
+
+<style lang="scss">
+  button {
+    @apply border-1 border-solid border-indigo px-5 py-2.5 rounded-full transition-all hover:bg-indigo hover:text-violet hover:scale-105 active:scale-100 select-none disabled:pointer-events-none disabled:opacity-50 disabled:bg-transparent disabled:text-smoke outline-none focus-visible:outline-offset-8 focus-visible:outline-indigo;
+  }
+</style>

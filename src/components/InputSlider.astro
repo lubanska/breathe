@@ -8,23 +8,28 @@ const { label, sliderId } = Astro.props;
 ---
 
 <input-slider class="hover:brightness-105">
-  <label class="pb-3" for="mySlider">{label}</label>
-  <div class="flex gap-2 items-center">
+  <label for="mySlider">{label}</label>
+  <div class="flex gap-4 items-center mt-1px">
     <input
       type="range"
       id={sliderId}
-      class="slider"
       min="1"
       max="10"
       value="1"
+      aria-labelledby={`label-${sliderId}`}
+      aria-valuemin="1"
+      aria-valuemax="10"
+      aria-valuenow="1"
+      aria-valuetext="1 seconds"
+      role="slider"
     />
-    <span id={`value-${sliderId}`} class="w-4">1s</span>
+    <span id={`value-${sliderId}`} class="w-4" aria-live="polite">1s</span>
   </div>
 </input-slider>
 
 <style style="scss">
   input[type="range"] {
-    @apply appearance-none h-2 w-full rounded-full  bg-transparent relative cursor-pointer shadow-indigo shadow-[0_0_0_1px] shadow-[0_0_0_1px_inset];
+    @apply appearance-none h-2 w-full rounded-full  bg-transparent relative cursor-pointer shadow-indigo shadow-[0_0_0_1px] shadow-[0_0_0_1px_inset] outline-none focus-visible:outline-offset-8 focus-visible:outline-indigo;
 
     &::-webkit-slider-thumb {
       @apply appearance-none bg-indigo w-5 h-5 rounded-full transition-all hover:scale-105 active:scale-100;
@@ -50,7 +55,6 @@ const { label, sliderId } = Astro.props;
       // Each time the button is clicked, update the count.
       inputSlider.addEventListener("input", () => {
         const val = (parseInt(inputSlider.value) - 1) * 11.11;
-        console.log(val);
         valueSpan.textContent = inputSlider.value + "s";
         inputSlider.style.background = `linear-gradient(to right, #BFBCDC ${val}%, #fff0 ${val}%)`;
       });
