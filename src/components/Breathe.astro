@@ -5,29 +5,15 @@ import InputSlider from "./InputSlider.astro";
 ---
 
 <div class="flex flex-col items-center gap-4">
-  <h1 class="font-800 text-14">Breathe Deep</h1>
+  <h1 class="font-800 text-14 font-serif my-8">Breathe deep...</h1>
   <BreatheBox />
 
   <Button buttonId="myButton">Breathe</Button>
 
   <div class="flex flex-col gap-2 w-300px">
-    <InputSlider label="Inhale A" sliderId="inhale" />
-    <InputSlider label="Inhale Hold B" sliderId="inhaleHold" />
-    <InputSlider label="Exhale C" sliderId="exhale" />
-    <InputSlider label="Exhale Hold D" sliderId="exhaleHold" />
+    <InputSlider label="Inhale" sliderId="inhale" />
+    <InputSlider label="Hold" sliderId="inhaleHold" />
+    <InputSlider label="Exhale" sliderId="exhale" />
+    <InputSlider label="Break" sliderId="exhaleHold" />
   </div>
 </div>
-
-<script>
-  document.querySelectorAll(".slider").forEach((slider) => {
-    slider.addEventListener("input", (event) => {
-      const valueDiv = document.getElementById(`value-${event.target.id}`);
-
-      if (valueDiv) {
-        valueDiv.innerHTML = event.target.value + "s";
-      } else {
-        console.log("oops");
-      }
-    });
-  });
-</script>

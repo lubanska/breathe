@@ -1,14 +1,29 @@
-import { defineConfig, transformerDirectives } from "unocss";
+import {
+  defineConfig,
+  presetUno,
+  presetWebFonts,
+  transformerDirectives,
+} from "unocss";
 
 export default defineConfig({
   theme: {
     colors: {
-      indigo: "#7D7ABC",
-      violet: "#6457A6",
+      indigo: "#BFBCDC",
+      violet: "#322B50",
       mustard: "#FFE347",
       ink: "#181528",
       smoke: "#BDBBDD",
     },
   },
   transformers: [transformerDirectives()],
+  presets: [
+    presetUno(),
+    presetWebFonts({
+      provider: "google",
+      fonts: {
+        sans: "Lato",
+        serif: "Lustria",
+      },
+    }),
+  ],
 });

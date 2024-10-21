@@ -34,7 +34,7 @@ const delay = (s: number) =>
 
 const updateValue = (elementId: string): number => {
   const el = document.getElementById(elementId);
-  return el ? parseInt((el as HTMLInputElement).value) : 0;
+  return el ? parseInt((el as HTMLInputElement).value) : 1;
 };
 
 const updateTimes = () => {

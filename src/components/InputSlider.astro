@@ -7,7 +7,7 @@ interface Props {
 const { label, sliderId } = Astro.props;
 ---
 
-<div class="hover:brightness-105">
+<input-slider class="hover:brightness-105">
   <label class="pb-3" for="mySlider">{label}</label>
   <div class="flex gap-2 items-center">
     <input
@@ -18,9 +18,9 @@ const { label, sliderId } = Astro.props;
       max="10"
       value="1"
     />
-    <div id={`value-${sliderId}`} class="w-4">0s</div>
+    <span id={`value-${sliderId}`} class="w-4">1s</span>
   </div>
-</div>
+</input-slider>
 
 <style style="scss">
   input[type="range"] {
@@ -39,3 +39,24 @@ const { label, sliderId } = Astro.props;
     }
   }
 </style>
+
+<script>
+  // Define the behaviour for our new type of HTML element.
+  class InputSlider extends HTMLElement {
+    connectedCallback() {
+      const inputSlider = this.querySelector("input") as HTMLInputElement;
+      const valueSpan = this.querySelector("span") as HTMLSpanElement;
+
+      // Each time the button is clicked, update the count.
+      inputSlider.addEventListener("input", () => {
+        const val = (parseInt(inputSlider.value) - 1) * 11.11;
+        console.log(val);
+        valueSpan.textContent = inputSlider.value + "s";
+        inputSlider.style.background = `linear-gradient(to right, #BFBCDC ${val}%, #fff0 ${val}%)`;
+      });
+    }
+  }
+
+  // Tell the browser to use our AstroHeart class for <astro-heart> elements.
+  customElements.define("input-slider", InputSlider);
+</script>
