@@ -1,3 +1,28 @@
 body {
-  @apply bg-violet text-smoke font-sans;
+  @apply bg-violet text-smoke font-sans m-20;
+}
+
+h1,
+h2,
+p,
+span,
+label,
+button,
+div {
+  &::selection {
+    @apply bg-smoke text-violet;
+  }
+}
+
+h1,
+h2 {
+  @apply font-serif my-4;
+}
+
+h1 {
+  @apply font-800 text-14 font-serif;
+}
+
+h2 {
+  @apply font-400 text-6 font-serif;
 }
