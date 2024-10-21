@@ -1,7 +1,10 @@
 ---
 import BreatheBox from "./BreatheBox.astro";
 import Button from "./Button.astro";
-import InputSlider from "./InputSlider.astro";
+import InputRange from "./InputRange.astro";
+import Presets from "./Presets.astro";
+
+const setPreset = () => {};
 ---
 
 <div class="flex flex-col items-center gap-10">
@@ -10,13 +13,15 @@ import InputSlider from "./InputSlider.astro";
 
   <Button buttonId="myButton" buttonLabel="Toggle breathing">Breathe</Button>
 
+  <Presets />
+
   <div class="flex gap-16 flex-wrap md:flex-nowrap">
     <div class="flex flex-col gap-3 w-full md:basis-50%">
       <h2>Change your focus</h2>
-      <InputSlider label="Inhale" sliderId="inhale" />
-      <InputSlider label="Hold" sliderId="inhaleHold" />
-      <InputSlider label="Exhale" sliderId="exhale" />
-      <InputSlider label="Break" sliderId="exhaleHold" />
+      <InputRange label="Inhale" sliderId="inhale" />
+      <InputRange label="Hold" sliderId="inhaleHold" />
+      <InputRange label="Exhale" sliderId="exhale" />
+      <InputRange label="Break" sliderId="exhaleHold" />
     </div>
     <div class="md:basis-50% flex flex-col gap-3">
       <h2>About this tool</h2>
