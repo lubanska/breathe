@@ -10,7 +10,6 @@ export default defineConfig({
     colors: {
       indigo: "#BFBCDC",
       violet: "#322B50",
-      mustard: "#FFE347",
       ink: "#181528",
       smoke: "#BDBBDD",
     },
