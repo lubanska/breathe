@@ -1,0 +1,18 @@
+---
+import Button from "../atoms/Button.astro";
+---
+
+<div class="flex flex-col items-center gap-10 my-10">
+  <div class="relative">
+    <div
+      class="w-40 h-40 rounded-full bg-ink opacity-50 absolute top-50% left-50% translate-x--50% translate-y--50%">
+    </div>
+    <div
+      id="breatheBox"
+      class="w-40 h-40 rounded-full relative inset-0 rounded-full border-3 border-solid border-indigo rotate-45">
+    </div>
+  </div>
+
+  <Button buttonId="myButton" buttonLabel="Start breathing"> Breathe </Button>
+  <div id="myInfoSpan"></div>
+</div>

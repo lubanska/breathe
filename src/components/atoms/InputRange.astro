@@ -46,13 +46,11 @@ const { label, sliderId } = Astro.props;
 </style>
 
 <script>
-  // Define the behaviour for our new type of HTML element.
   class InputRange extends HTMLElement {
     connectedCallback() {
       const inputRange = this.querySelector("input") as HTMLInputElement;
       const valueSpan = this.querySelector("span") as HTMLSpanElement;
 
-      // Each time the button is clicked, update the count.
       inputRange.addEventListener("input", () => {
         const val = (parseInt(inputRange.value) - 1) * 11.11;
         valueSpan.textContent = inputRange.value + "s";
@@ -60,7 +58,5 @@ const { label, sliderId } = Astro.props;
       });
     }
   }
-
-  // Tell the browser to use our AstroHeart class for <astro-heart> elements.
   customElements.define("input-slider", InputRange);
 </script>

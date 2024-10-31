@@ -1,0 +1,23 @@
+---
+import Button from "../atoms/Button.astro";
+import InputRange from "../atoms/InputRange.astro";
+---
+
+<div class="flex flex-col gap-3 w-full">
+  <h2>Change your focus</h2>
+  <InputRange label="Inhale" sliderId="inhale" />
+  <InputRange label="Hold" sliderId="inhaleHold" />
+  <InputRange label="Exhale" sliderId="exhale" />
+  <InputRange label="Break" sliderId="exhaleHold" />
+
+  <h3 class="mt-3">Presets</h3>
+  <div class="flex flex-row gap-6">
+    <Button buttonId="presetCalm" buttonLabel="Select calm preset">Calm</Button>
+    <Button buttonId="presetEnergy" buttonLabel="Select energy preset">
+      Energy
+    </Button>
+    <Button buttonId="presetSleep" buttonLabel="Select sleep preset">
+      Sleep
+    </Button>
+  </div>
+</div>

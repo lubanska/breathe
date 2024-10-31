@@ -20,5 +20,9 @@ h1 {
 }
 
 h2 {
+  @apply font-800 text-8 font-serif;
+}
+
+h3 {
   @apply font-400 text-6 font-serif;
 }

@@ -1,7 +1,9 @@
 const myButton = document.getElementById("myButton") as HTMLButtonElement;
+const myInfoSpan = document.getElementById("myInfoSpan") as HTMLDivElement;
 const breatheBox = document.getElementById("breatheBox") as HTMLDivElement;
 
-let shouldStop = true;
+let isPaused = true;
+let isCompleted = true;
 let myAnimation: Animation;
 let a: number;
 let b: number;
@@ -39,21 +41,31 @@ if (myButton) {
   myButton.addEventListener("click", (e) => {
     myButton.disabled = true;
 
-    if (shouldStop) {
+    if (isPaused && isCompleted) {
       myButton.innerText = "Pause";
       startCycle();
       myButton.disabled = false;
-    } else {
-      stopCycle().then(() => {
-        myButton.innerText = "Breathe";
-        myButton.disabled = false; // Re-enable button after stopping animation
-      });
+    } else if (!isPaused && !isCompleted) {
+      stopCycle();
     }
   });
 }
 
+const startCycle = () => {
+  isPaused = false;
+  isCompleted = false;
+  breatheCycle();
+};
+
 const stopCycle = async () => {
-  shouldStop = true;
+  // Modify flags
+  isPaused = true;
+  isCompleted = false;
+
+  // Display info
+  myButton.innerHTML = "Please wait...";
+
+  // Play animation in reverse
   myAnimation.pause();
   myAnimation.playbackRate = -1;
   myAnimation.play();
@@ -61,13 +73,14 @@ const stopCycle = async () => {
   myAnimation.pause();
 };
 
-const startCycle = () => {
-  shouldStop = false;
-  breatheCycle();
+const completeCycle = () => {
+  isCompleted = true;
+  myButton.disabled = false;
+  myButton.innerText = "Breathe";
 };
 
 const breatheCycle = async () => {
-  if (shouldStop) return;
+  if (isPaused) return;
 
   updateTimes();
 
@@ -79,23 +92,35 @@ const breatheCycle = async () => {
   myAnimation.playbackRate = breatheIn;
   myAnimation.play();
   await delay(a);
-  if (shouldStop) return;
+  if (isPaused) {
+    completeCycle();
+    return;
+  }
 
   // Step 2: Pause for 'b' duration
   myAnimation.pause();
   await delay(b);
-  if (shouldStop) return;
+  if (isPaused) {
+    completeCycle();
+    return;
+  }
 
   // Step 3: Play animation in reverse for 'c' duration
   myAnimation.playbackRate = -breatheOut;
   myAnimation.play();
   await delay(c);
-  if (shouldStop) return;
+  if (isPaused) {
+    completeCycle();
+    return;
+  }
 
   // Step 4: Pause for 'd' duration
   myAnimation.pause();
   await delay(d);
-  if (shouldStop) return;
+  if (isPaused) {
+    completeCycle();
+    return;
+  }
 
   breatheCycle();
 };

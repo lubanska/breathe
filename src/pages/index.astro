@@ -1,11 +1,21 @@
 ---
 import "../assets/main.scss";
-import Breathe from "../components/Breathe.astro";
+import About from "../components/organisms/About.astro";
+import Presets from "../components/organisms/Presets.astro";
+import Progress from "../components/organisms/Progress.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Breathe Deep">
   <main>
-    <Breathe />
+    <div>
+      <h1 class="text-center">Breathe deep...</h1>
+      <Progress />
+
+      <div class="flex gap-16 flex-wrap md:flex-nowrap">
+        <Presets />
+        <About />
+      </div>
+    </div>
   </main>
 </Layout>
