@@ -9,8 +9,19 @@ let c: number;
 let d: number;
 
 const myKeyframe: Keyframe[] = [
-  { transform: "scale(1)" },
-  { transform: "scale(2)" },
+  { clipPath: "polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)" },
+  {
+    clipPath: "polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)",
+  },
+  {
+    clipPath: "polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)",
+  },
+  {
+    clipPath: "polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)",
+  },
+  {
+    clipPath: "polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)",
+  },
 ];
 
 const myTiming: KeyframeAnimationOptions = {

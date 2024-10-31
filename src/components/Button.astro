@@ -2,17 +2,19 @@
 interface Props {
   buttonId: string;
   buttonLabel: string;
+  icon?: string;
 }
 
-const { buttonId, buttonLabel } = Astro.props;
+const { buttonId, buttonLabel, icon } = Astro.props;
 ---
 
 <button id={buttonId} type="button" aria-label={buttonLabel}>
+  {icon && <span class={`${icon} w-5 h-5 inline-block`} />}
   <slot />
 </button>
 
 <style lang="scss">
   button {
-    @apply border-1 border-solid border-indigo px-5 py-2.5 rounded-full transition-all hover:bg-indigo hover:text-violet hover:scale-105 active:scale-100 select-none disabled:pointer-events-none disabled:opacity-50 disabled:bg-transparent disabled:text-smoke outline-none focus-visible:outline-offset-8 focus-visible:outline-indigo;
+    @apply border-1 border-solid border-indigo px-5 py-2.5 rounded-full transition-all flex flex-row flex-nowrap gap-2 items-center justify-center hover:bg-indigo hover:text-violet hover:scale-105 active:scale-100 select-none disabled:pointer-events-none disabled:opacity-50 disabled:bg-transparent disabled:text-smoke outline-none focus-visible:outline-offset-8 focus-visible:outline-indigo;
   }
 </style>

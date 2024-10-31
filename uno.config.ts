@@ -1,5 +1,6 @@
 import {
   defineConfig,
+  presetIcons,
   presetUno,
   presetWebFonts,
   transformerDirectives,
@@ -25,5 +26,6 @@ export default defineConfig({
         serif: "Lustria",
       },
     }),
+    presetIcons(),
   ],
 });
