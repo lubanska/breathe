@@ -8,7 +8,7 @@ const { label, sliderId } = Astro.props;
 ---
 
 <input-slider class="hover:brightness-105">
-  <label for="mySlider">{label}</label>
+  <label for={sliderId}>{label}</label>
   <div class="flex gap-4 items-center mt-1px">
     <input
       type="range"

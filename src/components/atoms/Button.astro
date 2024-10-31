@@ -2,14 +2,12 @@
 interface Props {
   buttonId: string;
   buttonLabel: string;
-  icon?: string;
 }
 
-const { buttonId, buttonLabel, icon } = Astro.props;
+const { buttonId, buttonLabel } = Astro.props;
 ---
 
 <button id={buttonId} type="button" aria-label={buttonLabel}>
-  {icon && <span class={`${icon} w-5 h-5 inline-block`} />}
   <slot />
 </button>
 
